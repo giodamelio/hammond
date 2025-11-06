@@ -11,3 +11,11 @@ devenv.local.yaml
 
 # Development secrets
 .env
+
+# Python
+.venv
+__pycache__/
+
+# Restate
+.restate
+restate-data
