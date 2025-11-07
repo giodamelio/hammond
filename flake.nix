@@ -42,8 +42,7 @@
           pname = "hammond";
           version = "0.1.0";
           src = ./.;
-          # vendorHash = pkgs.lib.fakeHash;
-          vendorHash = null;
+          vendorHash = "sha256-+7o9XPUZEu+j6w6ar0Y2aNhaode9a4E2XwqKFqgOmH4=";
           buildInputs = [];
         };
       in {
