@@ -3,7 +3,11 @@ name = "hammond"
 version = "0.1.0"
 description = "Misc automations for my life"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "hypercorn>=0.17.3",
+    "pydantic>=2.12.4",
+    "restate-sdk[serde]>=0.11.0",
+]
 
 [project.scripts]
 hammond = "hammond.main:main"
