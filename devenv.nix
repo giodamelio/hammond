@@ -3,9 +3,8 @@
 {
   packages = with pkgs; [ restate ];
 
-  languages.python = {
+  languages.go = {
     enable = true;
-    uv.enable = true;
   };
 
   dotenv.enable = true;
