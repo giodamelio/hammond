@@ -1,0 +1,13 @@
+[project]
+name = "hammond"
+version = "0.1.0"
+description = "Misc automations for my life"
+requires-python = ">=3.13"
+dependencies = []
+
+[project.scripts]
+hammond = "hammond.main:main"
+
+[build-system]
+requires = ["hatchling", "editables"]
+build-backend = "hatchling.build"
