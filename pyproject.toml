@@ -19,6 +19,7 @@ build-backend = "hatchling.build"
 
 [dependency-groups]
 dev = [
+    "mypy>=1.18.2",
     "pytest>=9.0.1",
 ]
 
@@ -26,3 +27,8 @@ dev = [
 executionEnvironments = [
   { root = "tests", reportUnusedFunction = false, reportUnusedVariable = false, reportUnknownParameterType = false, reportMissingParameterType = false, reportUnusedParameter = false }
 ]
+
+[tool.mypy]
+namespace_packages = true
+explicit_package_bases = true
+mypy_path = "src"

@@ -218,8 +218,18 @@
               # Python stuff
               uv-check.enable = true;
               ruff.enable = true;
-              mypy.enable = true;
-              pyright.enable = true;
+              mypy = {
+                enable = true;
+                entry = lib.mkForce "uv run mypy";
+              };
+              pyright = {
+                enable = true;
+                # Make sure the pyright from Nixpkgs knows about our local dependencies
+                entry = lib.mkForce "${pkgs.writeShellScript "pyright-wrapper" ''
+                  export PYTHONPATH=${virtualenvEditable}/lib/python3.13/site-packages:$PYTHONPATH
+                  exec ${pkgs.pyright}/bin/pyright "$@"
+                ''}";
+              };
 
               # Random ones
               end-of-file-fixer.enable = true;
