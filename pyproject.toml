@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Misc automations for my life"
 requires-python = ">=3.13"
 dependencies = [
+    "coloredlogs>=15.0.1",
     "discord-py>=2.6.4",
     "hypercorn>=0.17.3",
     "pydantic>=2.12.4",
@@ -28,8 +29,13 @@ dev = [
 executionEnvironments = [
   { root = "tests", reportUnusedFunction = false, reportUnusedVariable = false, reportUnknownParameterType = false, reportMissingParameterType = false, reportUnusedParameter = false }
 ]
+stubPath = "stubs"
 
 [tool.mypy]
 namespace_packages = true
 explicit_package_bases = true
 mypy_path = "src"
+
+[[tool.mypy.overrides]]
+module = "coloredlogs"
+ignore_missing_imports = true
