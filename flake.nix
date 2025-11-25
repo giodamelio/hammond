@@ -40,6 +40,7 @@
       imports = [
         inputs.treefmt-nix.flakeModule
         inputs.git-hooks.flakeModule
+        ./nixos-module.nix
       ];
 
       systems = [
@@ -48,10 +49,6 @@
         "aarch64-darwin"
         "x86_64-darwin"
       ];
-
-      flake = {
-        nixosModules.default = import ./nixos-module.nix;
-      };
 
       perSystem = {
         config,
