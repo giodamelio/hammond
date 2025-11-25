@@ -10,6 +10,7 @@ dependencies = [
     "pydantic>=2.12.4",
     "requests>=2.32.5",
     "restate-sdk[serde]>=0.11.0",
+    "urlextract>=1.9.0",
 ]
 
 [project.scripts]
@@ -23,6 +24,7 @@ build-backend = "hatchling.build"
 dev = [
     "mypy>=1.18.2",
     "pytest>=9.0.1",
+    "types-requests>=2.32.4.20250913",
 ]
 
 [tool.pyright]
@@ -34,7 +36,7 @@ stubPath = "stubs"
 [tool.mypy]
 namespace_packages = true
 explicit_package_bases = true
-mypy_path = "src"
+mypy_path = "src:stubs"
 
 [[tool.mypy.overrides]]
 module = "coloredlogs"
