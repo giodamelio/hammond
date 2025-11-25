@@ -49,6 +49,10 @@
         "x86_64-darwin"
       ];
 
+      flake = {
+        nixosModules.default = import ./nixos-module.nix;
+      };
+
       perSystem = {
         config,
         self',
