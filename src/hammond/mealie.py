@@ -18,8 +18,6 @@ requester.headers = {"authorization": f"Bearer {SystemdCreds().mealie_token}"}
 
 async def message_handler(message: discord.Message) -> None:
     logger.info("Handling Recipe Import Message")
-    logger.debug(message)
-    logger.debug(message.clean_content)
 
     # Extract all URLS from the message
     urls = url_extractor.find_urls(message.clean_content)
@@ -42,7 +40,6 @@ def create_from_url(url: str) -> str:
     recipe_slug: dict = r.json()
 
     if r.status_code != 201:
-        logger.debug(r.json())
         error_detail = r.json()["detail"]
         raise RecipeException(f"Could not create recipe: {error_detail}")
 
