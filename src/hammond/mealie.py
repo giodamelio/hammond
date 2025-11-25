@@ -1,5 +1,6 @@
 import json
-from typing import cast
+import os
+import tempfile
 
 import discord
 import requests
@@ -10,7 +11,8 @@ from hammond.systemd_creds import SystemdCreds
 
 API_ROOT = "https://mealie.gio.ninja/api"
 
-url_extractor = URLExtract()
+cache_dir = os.environ.get("CACHE_DIRECTORY", tempfile.gettempdir())
+url_extractor = URLExtract(cache_dir=cache_dir)  # type: ignore
 
 requester = requests.Session()
 requester.headers = {"authorization": f"Bearer {SystemdCreds().mealie_token}"}
@@ -23,7 +25,6 @@ async def message_handler(message: discord.Message) -> None:
     urls = url_extractor.find_urls(message.clean_content)
     for url in urls:
         try:
-            url = cast(str, url)
             recipe_url = create_from_url(url)
             _ = await message.reply(content=f"Recipe created:\n{recipe_url}")
         except RecipeException as e:

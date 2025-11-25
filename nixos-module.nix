@@ -32,6 +32,7 @@
 
           # Security hardening
           DynamicUser = true;
+          CacheDirectory = "hammond";
           PrivateTmp = true;
           ProtectSystem = "strict";
           ProtectHome = true;
